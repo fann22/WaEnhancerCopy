@@ -960,15 +960,12 @@ public class Unobfuscator {
 
     public synchronized static Method loadNewMessageMethod(ClassLoader loader) throws Exception {
         return UnobfuscatorCache.getInstance().getMethod(loader, () -> {
-            var classData = dexkit.findClass(
-                FindClass.create().matcher(
-                    ClassMatcher.create().addUsingString("FMessage/getSenderUserJid/SenderJid type: ")
-                )
-            ).singleOrNull();
-            var methodData = classData.findMethod(
+            var clazzMessage = loadFMessageClass(loader);
+            var clazzData = Objects.requireNonNull(dexkit.getClassData(clazzMessage));
+            var methodData = clazzData.findMethod(
                 new FindMethod().matcher(
                     new MethodMatcher()
-                        .returnType(String.class)
+                        .returnType(String.class)/*
                         .opCodes(
                             new OpCodesMatcher()
                                 .opNames(
@@ -984,10 +981,10 @@ public class Unobfuscator {
                                         "move-exception", "monitor-exit", "throw"
                                     )
                                 )
-                        )
+                        )*/
                 )
             );
-            XposedBridge.log("Found class: " + classData.toString());
+            XposedBridge.log("Found class: " + clazzData.toString());
             XposedBridge.log("Found method: " + methodData.toString());
             /*var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
             if (methodData.isEmpty()) {
