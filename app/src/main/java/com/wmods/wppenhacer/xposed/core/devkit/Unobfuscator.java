@@ -977,13 +977,16 @@ public class Unobfuscator {
                                         "const/4", "return-object", "iget-object",
                                         "if-nez", "iget-object", "if-eqz",
                                         "sget-object", "new-instance", "invoke-direct",
-                                        "const/4", "iput-object", "monitor-exit",
+                                        "goto", "const/4", "iput-object", "monitor-exit",
                                         "move-exception", "monitor-exit", "throw"
                                     )
                                 )
                         )
                 )
             );
+            XposedBridge.log(clazzMessage.toString());
+            XposedBridge.log(clazzData.toString());
+            XposedBridge.log(methodData.toString());
             /*var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
             if (methodData.isEmpty()) {
                 var field = clazzMessage.getDeclaredField("A02");
