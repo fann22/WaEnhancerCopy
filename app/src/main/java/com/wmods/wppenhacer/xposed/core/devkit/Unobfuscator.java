@@ -971,16 +971,40 @@ public class Unobfuscator {
                         /*.opCodes(
                             new OpCodesMatcher()*/
                                 .opNames(
-                                    List.of("monitor-exit", "throw"/*
-                                        "instance-of", "if-eqz", "move-object",
-                                        "check-cast", "iget-object", "return-object",
-                                        "iget-object", "monitor-enter", "iget",
-                                        "const/4", "if-ne", "monitor-exit",
-                                        "const/4", "return-object", "iget-object",
-                                        "if-nez", "iget-object", "if-eqz",
-                                        "sget-object", "new-instance", "invoke-direct",
-                                        "goto", "const/4", "iput-object", "monitor-exit",
-                                        "move-exception", "monitor-exit", "throw"*/
+                                    List.of(
+    "instance-of",
+    "if-eqz",
+    "move-object",
+    "check-cast",
+    "iget-object",
+    "return-object",
+    "instance-of",
+    "if-eqz",
+    "move-object",
+    "check-cast",
+    "iget-object",
+    "return-object",
+    "iget-object",
+    "monitor-enter",
+    "iget",
+    "const/4",
+    "if-ne",
+    "monitor-exit",
+    "const/4",
+    "return-object",
+    "iget-object",
+    "if-nez",
+    "iget-object",
+    "if-eqz",
+    "sget-object",
+    "new-instance",
+    "invoke-direct",
+    "iput-object",
+    "monitor-exit",
+    "return-object",
+    "move-exception",
+    "monitor-exit",
+    "throw"
                                     ), OpCodeMatchType.EndsWith
                                 )
                         //)
