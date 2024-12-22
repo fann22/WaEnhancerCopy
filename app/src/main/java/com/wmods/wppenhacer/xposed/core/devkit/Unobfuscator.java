@@ -960,9 +960,12 @@ public class Unobfuscator {
 
     public synchronized static Method loadNewMessageMethod(ClassLoader loader) throws Exception {
         return UnobfuscatorCache.getInstance().getMethod(loader, () -> {
-            var clazzMessage = loadFMessageClass(loader);
-            var clazzData = Objects.requireNonNull(dexkit.getClassData(clazzMessage));
-            var methodData = clazzData.findMethod(
+            var classData = dexkit.findClass(
+                FindClass.create().matcher(
+                    ClassMatcher.create().addUsingString("FMessage/getSenderUserJid/SenderJid type: ")
+                )
+            ).singleOrNull();
+            var methodData = classData.findMethod(
                 new FindMethod().matcher(
                     new MethodMatcher()
                         .returnType(String.class)
@@ -984,9 +987,8 @@ public class Unobfuscator {
                         )
                 )
             );
-            XposedBridge.log(clazzMessage.toString());
-            XposedBridge.log(clazzData.toString());
-            XposedBridge.log(methodData.toString());
+            XposedBridge.log("Found class: " + classData.toString());
+            XposedBridge.log("Found method: " + methodData.toString());
             /*var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
             if (methodData.isEmpty()) {
                 var field = clazzMessage.getDeclaredField("A02");
