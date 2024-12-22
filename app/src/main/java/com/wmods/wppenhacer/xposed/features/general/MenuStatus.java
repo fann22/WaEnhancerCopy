@@ -37,6 +37,7 @@ public class MenuStatus extends Feature {
         var menuManagerClass = Unobfuscator.loadMenuManagerClass(classLoader);
 
         Class<?> StatusPlaybackBaseFragmentClass = classLoader.loadClass("com.whatsapp.status.playback.fragment.StatusPlaybackBaseFragment");
+        XposedBridge.log(StatusPlaybackBaseFragmentClass.toString());
         Class<?> StatusPlaybackContactFragmentClass = classLoader.loadClass("com.whatsapp.status.playback.fragment.StatusPlaybackContactFragment");
         var listStatusField = ReflectionUtils.getFieldsByExtendType(StatusPlaybackContactFragmentClass, List.class).get(0);
 
