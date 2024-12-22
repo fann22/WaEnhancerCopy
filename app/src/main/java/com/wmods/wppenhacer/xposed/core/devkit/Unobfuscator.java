@@ -962,7 +962,29 @@ public class Unobfuscator {
         return UnobfuscatorCache.getInstance().getMethod(loader, () -> {
             var clazzMessage = loadFMessageClass(loader);
             var clazzData = Objects.requireNonNull(dexkit.getClassData(clazzMessage));
-            var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
+            var methodData = clazzData.findMethod(
+                new FindMethod().matcher(
+                    new MethodMatcher()
+                        .returnType(String.class)
+                        .opCodes(
+                            new OpCodesMatcher()
+                                .opNames(
+                                    List.of(
+                                        "instance-of", "if-eqz", "move-object",
+                                        "check-cast", "iget-object", "return-object",
+                                        "iget-object", "monitor-enter", "iget",
+                                        "const/4", "if-ne", "monitor-exit",
+                                        "const/4", "return-object", "iget-object",
+                                        "if-nez", "iget-object", "if-eqz",
+                                        "sget-object", "new-instance", "invoke-direct",
+                                        "const/4", "iput-object", "monitor-exit",
+                                        "move-exception", "monitor-exit", "throw"
+                                    )
+                                )
+                        )
+                )
+            );
+            /*var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
             if (methodData.isEmpty()) {
                 var field = clazzMessage.getDeclaredField("A02");
                 methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingField(DexSignUtil.getFieldDescriptor(field)).returnType(String.class)));
@@ -992,7 +1014,7 @@ public class Unobfuscator {
                         if (!methodData.isEmpty()) break;
                     }
                 }
-            }
+            }*/
             if (methodData.isEmpty()) throw new RuntimeException("NewMessage method not found");
             return methodData.get(0).getMethodInstance(loader);
         });
