@@ -968,8 +968,8 @@ public class Unobfuscator {
                     new MethodMatcher()
                         .returnType(String.class)
                         .paramCount(0)
-                        .opNames(List.of("instance-of", "sget-object"), OpCodeMatchType.Contains)
-                        .opNames(List.of("monitor-exit", "throw"), OpCodeMatchType.EndsWith)
+                        //.opNames(List.of("instance-of", "sget-object"), OpCodeMatchType.Contains)
+                        .opNames(List.of("iput-object", "monitor-exit", "return-object", "move-exception", "monitor-exit", "throw"), OpCodeMatchType.EndsWith)
                 )
             );
             XposedBridge.log("Found class: " + clazzData.toString());
