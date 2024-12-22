@@ -1018,7 +1018,7 @@ public class Unobfuscator {
                 }
             }*/
             /*if (methodData.isEmpty()) */throw new RuntimeException("NewMessage method not found");
-            return methodData.get(0).getMethodInstance(loader);
+            //return methodData.get(0).getMethodInstance(loader);
         });
     }
 
