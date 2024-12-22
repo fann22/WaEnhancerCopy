@@ -965,11 +965,12 @@ public class Unobfuscator {
             var methodData = clazzData.findMethod(
                 new FindMethod().matcher(
                     new MethodMatcher()
-                        .returnType(String.class)/*
-                        .opCodes(
-                            new OpCodesMatcher()
+                        .returnType(String.class)
+                        .paramCount(0)
+                        /*.opCodes(
+                            new OpCodesMatcher()*/
                                 .opNames(
-                                    List.of(
+                                    List.of(/*"return-object", "move-exception", "monitor-exit"*/
                                         "instance-of", "if-eqz", "move-object",
                                         "check-cast", "iget-object", "return-object",
                                         "iget-object", "monitor-enter", "iget",
@@ -981,7 +982,7 @@ public class Unobfuscator {
                                         "move-exception", "monitor-exit", "throw"
                                     )
                                 )
-                        )*/
+                        //)
                 )
             );
             XposedBridge.log("Found class: " + clazzData.toString());
