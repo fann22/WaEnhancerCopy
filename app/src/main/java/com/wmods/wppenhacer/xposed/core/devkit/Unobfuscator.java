@@ -968,45 +968,11 @@ public class Unobfuscator {
                     new MethodMatcher()
                         .returnType(String.class)
                         .paramCount(0)
-                        //.opNames(List.of("instance-of", "sget-object"), OpCodeMatchType.Contains)
                         .opNames(List.of("iput-object", "monitor-exit", "return-object", "move-exception", "monitor-exit", "throw"), OpCodeMatchType.EndsWith)
                 )
             );
-            XposedBridge.log("Found class: " + clazzData.toString());
-            XposedBridge.log("Found method: " + methodData.toString());
-            /*var methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingString("\n").returnType(String.class)));
-            if (methodData.isEmpty()) {
-                var field = clazzMessage.getDeclaredField("A02");
-                methodData = clazzData.findMethod(new FindMethod().matcher(new MethodMatcher().addUsingField(DexSignUtil.getFieldDescriptor(field)).returnType(String.class)));
-            }
-            if (methodData.isEmpty()) {
-                var classMatchers = new String[]{
-                    "FMessageSystemScheduledCallStart/setData index out of bounds: ",
-                    "FMessage/getSenderUserJid/key.id="
-                };
-                var fieldNames = new String[]{"A02", "A0o"};
-                for (int i = 0; i < classMatchers.length; i++) {
-                    var classData = dexkit.findClass(
-                        FindClass.create().matcher(
-                            ClassMatcher.create().addUsingString(classMatchers[i])
-                        )
-                    ).singleOrNull();
-                    if (classData != null) {
-                        var targetClass = classData.getInstance(loader);
-                        var field = targetClass.getDeclaredField(fieldNames[i]);
-                        methodData = clazzData.findMethod(
-                            new FindMethod().matcher(
-                            new MethodMatcher()
-                                .addUsingField(DexSignUtil.getFieldDescriptor(field))
-                               .returnType(String.class)
-                            )
-                        );
-                        if (!methodData.isEmpty()) break;
-                    }
-                }
-            }*/
-            /*if (methodData.isEmpty()) */throw new RuntimeException("NewMessage method not found");
-            //return methodData.get(0).getMethodInstance(loader);
+            if (methodData.isEmpty()) throw new RuntimeException("NewMessage method not found");
+            return methodData.get(0).getMethodInstance(loader);
         });
     }
 
