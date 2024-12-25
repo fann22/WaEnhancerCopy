@@ -218,6 +218,13 @@
     <string name="navigation_transparency">שקיפות ניווט</string>
     <string name="show_online_last_seen_in_conversation_list">הצג מחובר/ת או נראה לאחרונה במסך הבית</string>
     <string name="show_online_last_seen_in_conversation_list_sum">הצג מחובר/ת או נראה לאחרונה במסך הבית\n(הערה: יש להפעיל את ההגדרה לכולם בתפריט הגדרות הפרטיות של ווצאפ)</string>
+    <string name="show_online_last_seen_as_elapsed_time">הצג זמן שחלף במקום תאריך ושעה</string>
+    <string name="show_online_last_seen_as_elapsed_time_sum">הצג אחרון שנראה במסך הבית כזמן שחלף\nלדוגמה: \"נראה לאחרונה לפני 8ש 2ד\"</string>
+    <string name="last_seen_just_now">נראה עכשיו</string>
+    <string name="last_seen_day_hour">נראה לפני %1$dי %2$dש</string>
+    <string name="last_seen_hour_minute">נראה לפני %1$dש %2$dד</string>
+    <string name="last_seen_hour">נראה לפני %1$dש</string>
+    <string name="last_seen_minute">נראה לפני %1$dד</string>
     <string name="toast_online">%s מחובר/ת</string>
     <string name="show_toast_on_contact_online">הצג הודעה קופצת על איש קשר מחובר/ת</string>
     <string name="show_toast_on_contact_online_sum">הצג הודעה קופצת כאשר איש קשר מחובר</string>
@@ -308,7 +315,8 @@
     <string name="enable_copy_status">הפעל מצב העתקה בסטטוס</string>
     <string name="enable_copy_status_sum">מפעיל את האפשרות להעתיק את התיאור והכיתוב של הסטטוסים על ידי החזקה בהם</string>
     <string name="animation_emojis">אנימציית אימוג\'י בצ\'אט</string>
-    <string name="animation_emojis_sum"></string>
+    <string name="animation_emojis_sum">
+    </string>
     <string name="vertical_status">סטטוס אנכי</string>
     <string name="vertical_status_sum">הצג סטטוס במצב אנכי בכרטיסיית העדכונים</string>
     <string name="disable_version_check">השבת את בדיקת הגרסה</string>
@@ -344,7 +352,8 @@
     <string name="list_animations_home_screen_sum">הוסף אנימציות בעת החלקה ברשימת הצ\'אטים</string>
     <string name="stamp_copied_messages">הסר חותמת מהודעות שהועתקו</string>
     <string name="stamp_copied_messages_sum">מסיר שם ותאריך כשמעתיקים יותר מהודעה אחת</string>
-    <string name="invalid_folder"></string>
+    <string name="invalid_folder">
+    </string>
     <string name="uri_permission">כדי להשתמש בערכות נושא מותאמות אישית, עליך לבחור בתיקיית \"WaEnhancer\" ב\"הורדה\"</string>
     <string name="double_click_to_react">אפשר לחיצה כפולה כדי להגיב</string>
     <string name="double_click_to_like_sum">מפעיל את האפשרות ללחוץ פעמיים על ההודעה כדי להגיב עליה באימוג\'י</string>
